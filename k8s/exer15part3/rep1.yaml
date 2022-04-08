@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mon-site-deploiment
+  namespace: jpd
+  labels:
+    app: mon-site
+    tier: frontend
+    env : unit
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: mon-site
+      tier: frontend
+      env : unit
+  template:
+    metadata:
+      labels:
+        app: mon-site
+        tier: frontend
+        env : unit
+    spec:
+      containers:
+      - name: nginx
+        image: nginxdemos/hello
+        ports:
+        - containerPort: 80

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+    tier: frontend
+    env: accept
+  name: nginx-deployment5
+  namespace: jpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+      tier: frontend
+      env: accept
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: frontend
+        env: accept
+    spec:
+      containers:
+      - name: nginx
+        image: nginxdemos/hello
+        ports:
+        - containerPort: 80
+        

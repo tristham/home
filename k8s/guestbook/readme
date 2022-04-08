@@ -1,0 +1,5 @@
+Attention
+Cette exercice provient de : https://kubernetes.io/docs/tutorials/stateless-application/guestbook/
+
+IL semble y avoir un problème dans notre cas d'utilisation du service CLUSTER-IP
+Notre frontend ne communique pas avec le backend.

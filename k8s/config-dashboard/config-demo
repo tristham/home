@@ -1,0 +1,20 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: fake-ca-file
+    server: https://10.100.2.90
+  name: kernetes-distant
+contexts:
+- context:
+    cluster: "kubernetes-distant"
+    user: "kubernetes-admin-distant"
+  name: kubernetes-admin@kubernetes
+
+current-context: "kubernetes-admin@kubernetes"
+kind: Config
+preferences: {}
+users:
+- name: kubernetes-admin-distant
+  user:
+    client-certificate: fake-cert-file
+    client-key: fake-key-seefile

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-avec-volume
+  namespace: jpd
+  labels:
+    app: nginx
+    tier: frontend
+    env: unit
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+      tier: frontend
+      env: unit
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: frontend
+        env: unit
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: www
+      volumes:
+        - name: www
+          persistentVolumeClaim:
+            claimName: pvc-exerice-jpd
+     

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mon-site
+  namespace: jpd
+  labels:
+    app: mon-site
+    tier: frontend
+    env: unit
+spec:
+  selector:
+    app: mon-site
+    tier: frontend
+    env: unit
+  ports:
+    - protocol: TCP
+      port: 80 
+      nodePort: 30001
+  type: NodePort
+  

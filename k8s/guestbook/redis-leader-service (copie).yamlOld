@@ -1,0 +1,19 @@
+# SOURCE: https://cloud.google.com/kubernetes-engine/docs/tutorials/guestbook
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-leader
+  labels:
+    app: redis
+    role: leader
+    tier: backend
+spec:
+  ports:
+  - port: 6379
+    targetPort: 6379 # Les ports du node port vont de 30 000 à 32 000
+    nodePort: 31000
+  type: NodePort #Ajout du type node port pour répondre a notre cluster. 
+  selector:
+    app: redis
+    role: leader
+    tier: backend

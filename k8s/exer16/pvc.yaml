@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-exerice-jpd
+spec:
+  storageClassName: manuel
+  accessModes:
+    - ReadWriteMany
+  resources: 
+    requests:
+      storage: 100Mi
+  volumeName: pv-exercice-jpd

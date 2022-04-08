@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+    tier: frontend
+    env: fonc
+  name: nginx-deployment3
+  namespace: jpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+      tier: frontend
+      env: fonc
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: frontend
+        env: fonc
+    spec:
+      containers:
+      - name: nginx
+        image: nginxdemos/hello
+        ports:
+        - containerPort: 80
+        

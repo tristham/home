@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+    tier: backend
+    env: unit
+  name: nginx-deployment2
+  namespace: jpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+      tier: backend
+      env: unit
+  template:
+    metadata:
+      labels:
+        app: nginx
+        tier: backend
+        env: unit
+    spec:
+      containers:
+      - name: nginx
+        image: nginxdemos/hello
+        ports:
+        - containerPort: 80
