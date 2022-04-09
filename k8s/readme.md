@@ -6,10 +6,7 @@ Principales commandes
 kubectl get nodes # Ensemble des noeuds du cluster
 kubectl get pods --all-namespaces
 ```
-## Démarrer ma session dans K8S
-```bash
-kubectl config set-context --current --namespace=jpd
-```
+
 ##
 ```bash
 cd exer16

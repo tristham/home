@@ -1,0 +1,97 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    annotations:
+      cni.projectcalico.org/containerID: 21839f30173a05953cfa61b82aaa2651aaf4311c7f08bbf6ba460669d4bfc522
+      cni.projectcalico.org/podIP: 192.168.28.18/32
+      cni.projectcalico.org/podIPs: 192.168.28.18/32
+    creationTimestamp: "2022-04-09T15:39:57Z"
+    labels:
+      run: www
+    name: www
+    namespace: jpd
+    resourceVersion: "64628101"
+    uid: 8bae22d6-5fb3-4cbe-bc20-3325c47ffdb1
+  spec:
+    containers:
+    - env:
+      - name: environement
+        value: Dev
+      image: nginx
+      imagePullPolicy: Always
+      name: www
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-8jbpd
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: ivk8sc02w06
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: default-token-8jbpd
+      secret:
+        defaultMode: 420
+        secretName: default-token-8jbpd
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2022-04-09T15:39:57Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2022-04-09T15:39:59Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2022-04-09T15:39:59Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2022-04-09T15:39:57Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://03caeb7d4ef9e144059194a8c4f23befda923f9bc34ecbf830d31506426165ef
+      image: nginx:latest
+      imageID: docker-pullable://nginx@sha256:2275af0f20d71b293916f1958f8497f987b8d8fd8113df54635f2a5915002bf1
+      lastState: {}
+      name: www
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2022-04-09T15:39:58Z"
+    hostIP: 10.100.2.96
+    phase: Running
+    podIP: 192.168.28.18
+    podIPs:
+    - ip: 192.168.28.18
+    qosClass: BestEffort
+    startTime: "2022-04-09T15:39:57Z"
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
