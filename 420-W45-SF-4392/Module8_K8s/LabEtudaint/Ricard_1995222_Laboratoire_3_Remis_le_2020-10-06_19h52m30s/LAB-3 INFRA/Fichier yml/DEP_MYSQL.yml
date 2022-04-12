@@ -1,0 +1,42 @@
+apiVersion:  apps/v1
+kind: Deployment
+metadata:
+  name: mysql-1995222-1996034-1995274
+  namespace: "1995222-1996034-1995274"
+  labels:
+    app: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: mysql
+  strategy:                # La strategie recreate veux dire que si on ugrade un deployment tous les pods de lancienne version
+    type: Recreate         # vont sarreter et vont attendre que le pod avec la nouvelle version sois cree avant de repartir
+  template:                # dit au deployment d'executer le pod correspondant au modele suivant (app:wordpress,mysql)
+    metadata:
+      labels:
+        app: wordpress
+        tier: mysql
+    spec:
+      securityContext:
+        runAsUser: 2000         # pour bypasser le security du dossier var/lid/mysql
+      containers:
+      - image: mysql
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD     # va etre utilisé plus tard dans dep wordpress pour se connecter a la bd
+          value: "Passw0rd"
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-ps                 # quelle donnees va etre sauvegarder
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-ps    
+        persistentVolumeClaim:
+          claimName: pvc-nfs-mysql-1995222-1996034-1995274  # ou les donnees vont etre sauvegarder (PVC) 
+   
+
+          

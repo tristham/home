@@ -1,0 +1,8 @@
+\babel@toc {french}{}\relax 
+\beamer@sectionintoc {1}{Thèmes}{2}{0}{1}
+\beamer@sectionintoc {2}{Les services de l’Internet}{3}{0}{2}
+\beamer@sectionintoc {3}{Réseau}{7}{0}{3}
+\beamer@sectionintoc {4}{Stockage}{9}{0}{4}
+\beamer@subsectionintoc {4}{1}{Logical Volume Manager}{13}{0}{4}
+\beamer@subsectionintoc {4}{2}{Système de fichier réseau}{15}{0}{4}
+\beamer@sectionintoc {5}{À faire}{16}{0}{5}

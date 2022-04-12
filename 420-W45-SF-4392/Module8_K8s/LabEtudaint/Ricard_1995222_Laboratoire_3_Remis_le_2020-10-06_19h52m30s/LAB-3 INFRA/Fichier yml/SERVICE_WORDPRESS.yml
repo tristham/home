@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-1995222-1996034-1995274
+  namespace: "1995222-1996034-1995274" 
+  labels:                 
+    app: wordpress
+spec:
+  ports:
+    - protocol: TCP
+      port: 80        # exposer pods
+      nodePort: 30105 # exposer au niveau des noeds
+  type: NodePort    
+  selector:
+    app: wordpress
+    tier: frontend
+ 

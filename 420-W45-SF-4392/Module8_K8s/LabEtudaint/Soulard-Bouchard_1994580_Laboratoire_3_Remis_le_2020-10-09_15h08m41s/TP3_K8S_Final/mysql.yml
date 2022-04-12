@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: mysql-service
+  namespace: 1239563-1994580-1994821-1522625
+  labels:
+    app: mysql
+    tier: backend
+    env: dev
+spec: 
+  ports:
+    - port: 3306
+  selector:
+    app: mysql
+    tier: backend
+    env: dev
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+  name: jenspvnfs
+  namespace: 1239563-1994580-1994821-1522625
+spec: 
+  storageClassName: manual
+  capacity: 
+    storage: 20Gi
+  accessModes: 
+  - ReadWriteMany
+  nfs:
+    server: 10.100.1.6
+    path: "/srv/exports/1239563-1994580-1994821-1522625/Lab_03"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+  name: pvc-mysql
+  namespace: 1239563-1994580-1994821-1522625
+  labels: 
+    app: wordpress
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources: 
+    requests: 
+      storage: 20Gi
+  volumeName: jenspvnfs
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: 1239563-1994580-1994821-1522625
+  labels: 
+    app: mysql
+    tier: backend
+    env: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+      tier: backend
+      env: dev
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+        tier: backend
+        env: dev
+    spec: 
+      containers: 
+      - name: mysql
+        image: mysql
+        env: 
+        - name: MYSQL_ROOT_PASSWORD
+          value: tortue
+        - name: MYSQL_DATABASE
+          value: wordpress
+        - name: MYSQL_USER
+          value: wordpress
+        - name: MYSQL_PASSWORD
+          value: wordpress
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: jenspvnfs
+          mountPath: "/var/lib/mysql"        
+      volumes:
+      - name: jenspvnfs
+        persistentVolumeClaim: 
+          claimName: pvc-mysql
+      securityContext:
+        runAsUser: 2000
+    
+
+      
