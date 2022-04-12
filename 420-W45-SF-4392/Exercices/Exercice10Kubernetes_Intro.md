@@ -105,4 +105,4 @@ kubectl delete deployment mon-nginx
 
 </details>
 
-# Attention, déposé votre capture d'écran sur LÉA
+# Attention, déposer votre capture d'écran sur LÉA
