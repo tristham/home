@@ -189,6 +189,7 @@ Utilisez la commande **kubectl create** pour créer un déploiement qui gère un
 
 ### 2 Affichez le déploiement 
 
+
 ### 3 Afficher le pod
 
 ### 4 Voir le pod
@@ -228,7 +229,10 @@ Par défaut, le Pod n'est accessible que par son adresse IP interne dans le clus
 
 ### 2 Affichez le Service que vous venez de créer
 
+**Prenez une capture et déposé celle-ci sur LÉA dans travaux.**
+
 ### 3 Vous pouvez maintenant nettoyer les ressources que vous avez créées dans votre cluster 
+
 
 <details>
 
@@ -242,6 +246,7 @@ kubectl expose deployment hello-node --type=LoadBalancer --port=8080
 ```
 kubectl get services
 ```
+
 ### 3 Vous pouvez maintenant nettoyer les ressources que vous avez créées dans votre cluster 
 ```
 kubectl delete service hello-node
