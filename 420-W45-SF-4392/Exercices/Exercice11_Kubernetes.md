@@ -47,7 +47,7 @@ $kubectl config set-contex [matricule] --cluster=kubernetes-distant --user=kuber
 
 - Définissez votre nouveau context comme étant le contexte courant (use-context)
 ```
-$kubectl config set-contex [matricule] 
+$kubectl config set-context [matricule] 
 ```
 - Affichez les noeuds et les pods du cluster (tous les namespaces) et de votre namespace pour valider que tout fonctionne
 
